@@ -488,11 +488,14 @@ export default {
     openEditModal(post) {
       this.editMode = true;
       this.editingId = post.id;
+      // Format date to YYYY-MM-DD for input type="date"
+      const formattedDate = post.release_date ? format(new Date(post.release_date), 'yyyy-MM-dd') : '';
+      
       this.form = {
         title: post.title,
         body: post.body,
         category: post.category,
-        release_date: post.release_date,
+        release_date: formattedDate,
         user_id: post.user_id
       };
       this.showModal = true;
